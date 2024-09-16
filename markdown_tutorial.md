@@ -77,3 +77,22 @@ print("Hello World")
 x <-4^2
 ```
 
+## TASK LISTS
+
+- [ ] this is an incomplete task
+- [x] this is a complete task
+- [x] @mentions, #refs, [links](url), **formatting**, and <del>tags</del> supported
+- [x] list syntax required (any unordered or ordered list supported)
+
+## TABLES 
+
+First Header | Second Header 
+------------ | -------------
+Content cell 1 | Content Cell 2
+Content column 1 | Content Column 2
+
+## EMOJI
+
+:ghost:
+:blowfish:
+:octopus:
