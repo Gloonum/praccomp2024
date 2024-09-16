@@ -51,8 +51,29 @@ Format: \!\[Alt text\](url\)
 
 http://brewerlab.net
 
-[Brewer Lab] (http://brewerlab.net)
+[Brewer Lab](http://brewerlab.net)
 
 ## BACKSLASH ESCAPES
 
 \*Literal asterisks\*
+
+## FENCED CODE BLOCKS
+
+* Generic example
+
+``` 
+echo "Hello World"
+```
+
+* Python example
+
+```python
+print("Hello World")
+```
+
+* R example
+
+```r
+x <-4^2
+```
+
