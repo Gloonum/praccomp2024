@@ -41,4 +41,8 @@ Ordered lists
 	* Item 3a
 	* Item 3b
 
+## IMAGES
 
+![Mola mola](https://www.fijireeffish.com/tips/mola-mola.jpg)
+
+Format: \![Alt text](url)
