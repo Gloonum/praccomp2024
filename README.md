@@ -21,7 +21,7 @@ Unformatted text
 - Text formatting
 	- _Spider_ -> italics
 	- __Spider__ -> bold
-	- _*Spider*_ -> bold and italics
+	- __*Spider*__ -> bold and italics
 	- ~Spider~ -> strikethrough
 
 
