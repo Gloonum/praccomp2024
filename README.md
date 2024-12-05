@@ -49,7 +49,7 @@ points to what they measured prior to the implementation of the restoration plot
 
 With my master's work, I am following up on their projects now that it has been five 
 years since the reefs were restored, as we are interested in seeing how these 
-conditions may have changed even further with additional time post restoration. For the purposes of this project, I was specifically interested in looking at two particular response variables that they also evaluated: trematode diversity in the Eastern mudsnail, (_Ilyanassa obsoleta_) and oyster density by restoration treatment. I hypothesized that trematode diversity would be higher five years post restoration at the restored sites than at their unrestored counterparts. In terms of restoration treatment, I predicted that the novel breakwater substrate (OysterCatcherTM, or OC) would possess greater oyster densities than the more traditional restoration approach (shell bags, or SB) as the latter technique has had mixed results in previous applications. 
+conditions may have changed even further with additional time post restoration. For the purposes of this project, I was specifically interested in looking at two particular response variables that they also evaluated: trematode diversity in the Eastern mudsnail, (_Ilyanassa obsoleta_) and oyster density by restoration treatment. I hypothesized that trematode diversity would be higher five years post restoration at the restored sites than at their unrestored counterparts. In terms of restoration treatment, I predicted that the novel breakwater substrate (OysterCatcherTM, or OC) would possess greater oyster densities than the more traditional restoration approach (shell bags, or SB) as the latter technique has had mixed results in previous applications. Please see the image below, which illustrates how the two shoreline treatments looked when they were implemented (in 2018) versus how they looked in 2023.
 
 ![OysterTreatment_pics](https://github.com/user-attachments/assets/d321910c-23eb-498b-9fd7-25a04ded4564)
 
@@ -57,7 +57,14 @@ The purpose of this research is to evaluate the effectiveness of these two resto
 
 
 #### Methods
-All sites are located at Carrot Island in the Rachel Carson Reserve, Beaufort, NC. The sites are located across two shorelines: the creek, which is relatively more protected from wave action, and the ramp, which is relatively more exposed to higher wave action due to increased boat activity in the area. Data accessed from previous work (completed by Christopher Moore and Emory Wellman) was collected between 2017-2020, with the same methods outlined below. 
+All sites are located at Carrot Island in the Rachel Carson Reserve, Beaufort, NC. The sites are located across two shorelines: the creek, which is relatively more protected from wave action, and the ramp, which is relatively more exposed to higher wave action due to increased boat activity in the area. Data accessed from previous work (completed by Christopher Moore and Emory Wellman) was collected between 2017-2020, with the same methods outlined below. The first image below shows the general region within which my sites are located.
+
+![Screenshot (1214)](https://github.com/user-attachments/assets/92ac7fa8-fb4c-4176-a950-dbc2afcdbaaa)
+
+This more site-specific map, pictured below, shows the distribution of my sample sites around Carrot Island, with colors indicating treatment type.
+
+![sitemap](https://github.com/user-attachments/assets/a4e3b919-c903-4cdf-b293-31c5db14783a)
+
 - Trematode diversity in _I. obsoleta_
     - Following up on Christopher Moore's biodiversity work, I collected 100 snails per region across seven regions of the study area (four loose cultch/unrestored reefs, three restored regions in which there are both OC and SB reefs). Snails were not always present at the study regions, but 100 snails were collected each time they were available. My sampling took place in April, June, September, and October of 2023, and June and August of 2024. 
     - The process of dissecting snails for parasites begins by measuring the length of the snail (from the bottom of the aperture to the tip of their shell). The shell is then broken with a hammer and the gonad region (located in the tip of the shell) is removed and broken up with forceps and placed under a light microscope to look for infection. If infected, the parasite species is identified and recorded, and a sample is taken to preserve for potential further use in the future.
