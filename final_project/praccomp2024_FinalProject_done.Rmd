@@ -1,0 +1,202 @@
+---
+title: "Praccomp Final Project"
+output:
+  html_document:
+    df_print: paged
+  pdf_document: default
+  html_notebook: default
+---
+# Setting Working Directory
+```{r setup}
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_knit$set(root.dir = "C:/Users/Grace/praccomp2024/final_project")
+```
+
+# Loading necessary packages
+```{r}
+#Rank abundance curves for trematode diversity data
+library(vegan)
+library(BiodiversityR)
+library(ggplot2)
+library(ggrepel)
+library(patchwork)
+library(tidyverse)
+#Oyster density plots
+library(ggplot2)
+library(MASS)
+```
+
+# Trematode Diversity Analyses
+
+## Loading in the data
+```{r}
+#Loading in the data
+BIOR_5YR <- read.csv("BIOR_5YR.csv")
+BIOR_5YR_env <- read.csv("BIOR_5YR_env.csv")
+
+BIOR_Pre <- read.csv("BIOR_Pre.csv")
+BIOR_1YR <- read.csv("BIOR_1YR.csv")
+BIOR_PRE_1YR_env <- read.csv("BIOR_PRE_1YR_env.csv")
+```
+
+## Changing Site Type to a Factor in the Environmental data
+```{r}
+BIOR_5YR_env$site_type <-as.factor(BIOR_5YR_env$site_type)
+class(BIOR_5YR_env$site_type)
+
+BIOR_PRE_1YR_env$site_type <-as.factor(BIOR_PRE_1YR_env$site_type)
+class(BIOR_PRE_1YR_env$site_type)
+```
+
+
+## Plots within the BiodiversityR package functions
+```{r}
+#5YR - quick plot 
+
+rankabuncomp(BIOR_5YR, y=BIOR_5YR_env, factor='site_type', 
+    scale='logabun', legend=FALSE)
+
+#1YR - quick plot 
+
+rankabuncomp(BIOR_1YR, y=BIOR_PRE_1YR_env, factor='site_type', 
+    scale='logabun', legend=FALSE)
+
+#Pre - quick plot
+
+rankabuncomp(BIOR_Pre, y=BIOR_PRE_1YR_env, factor='site_type', 
+    scale='logabun', legend=FALSE)
+```
+
+
+## Defining a theme to use in the ggplot curves
+```{r}
+#This is an online theme that is provided along with rank-abundance curve code, I included it here to help enhance the visual produced by the rank abundance curve plots.
+BioR.theme <- theme(
+        panel.background = element_blank(),
+        panel.border = element_blank(),
+        panel.grid = element_blank(),
+        axis.line = element_line("gray25"),
+        text = element_text(size = 12),
+        axis.text = element_text(size = 10, colour = "gray25"),
+        axis.title = element_text(size = 14, colour = "gray25"),
+        legend.title = element_text(size = 14),
+        legend.text = element_text(size = 14),
+        legend.key = element_blank())
+```
+
+
+## Making Rank-Abundance Curves using ggplot
+```{r}
+#fancier plots
+
+#PRE
+
+fancy_Pre <- rankabuncomp(BIOR_Pre, y=BIOR_PRE_1YR_env, factor='site_type', scale='logabun',  return.data=TRUE, legend=FALSE)
+
+fancy_Pre
+
+fancy_Pre_plot <- ggplot(data=fancy_Pre, aes(x = rank, y = log(abundance))) +
+    scale_x_continuous(expand=c(0, 1), sec.axis = dup_axis(labels=NULL, name=NULL)) +
+    scale_y_continuous(expand=c(0, 1), sec.axis = dup_axis(labels=NULL, name=NULL)) +
+    geom_line(aes(colour=Grouping), size=1) + 
+    geom_point(aes(colour=Grouping, shape=Grouping), size=5, alpha=0.7) +
+    geom_text_repel(data=subset(fancy_Pre, labelit == TRUE), 
+        aes(colour=Grouping, label=species), 
+        angle=45, nudge_x=1, nudge_y=1, show.legend=FALSE) + 
+  BioR.theme +
+    labs(x = "Rank", y = "Abundance", title= "Pre-restoration (2017-2018)", colour = "Site Type", shape = "Site Type") +
+  scale_color_manual(values=c("#666666","#669933"))
+
+
+fancy_Pre_plot
+
+#1 YR
+
+fancy_1YR <- rankabuncomp(BIOR_1YR, y=BIOR_PRE_1YR_env, factor='site_type', scale='logabun',return.data=TRUE, legend=FALSE)
+
+fancy_1YR_plot <- ggplot(data=fancy_1YR, aes(x = rank, y = log(abundance))) +
+    scale_x_continuous(expand=c(0, 1), sec.axis = dup_axis(labels=NULL, name=NULL)) +
+    scale_y_continuous(expand=c(0, 1), sec.axis = dup_axis(labels=NULL, name=NULL)) +
+    geom_line(aes(colour=Grouping), size=1) + 
+    geom_point(aes(colour=Grouping, shape=Grouping), size=5, alpha=0.7) +
+    geom_text_repel(data=subset(fancy_1YR, labelit == TRUE), 
+        aes(colour=Grouping, label=species), 
+        angle=45, nudge_x=1, nudge_y=1, show.legend=FALSE) + 
+  BioR.theme +
+    labs(x = "Rank", y = "Abundance", title= "One year Post-restoration (2018-2019)", colour = "Site Type", shape = "Site Type") +
+  scale_color_manual(values=c("#666666","#669933"))
+
+
+
+fancy_1YR_plot
+
+
+#5 YR 
+
+fancy_5YR_nolog <- rankabuncomp(BIOR_5YR, y=BIOR_5YR_env, factor='site_type', scale='logabun', return.data=TRUE, legend=FALSE)
+
+fancy_5YR_plot2 <- ggplot(data=fancy_5YR_nolog, aes(x = rank, y = log(abundance))) + 
+    scale_x_continuous(expand=c(0, 1), sec.axis = dup_axis(labels=NULL, name=NULL)) +
+    scale_y_continuous(expand=c(0, 1), sec.axis = dup_axis(labels=NULL, name=NULL)) +
+    geom_line(aes(colour=Grouping), size=1) +
+    geom_point(aes(colour=Grouping, shape=Grouping), size=5, alpha=0.7) +
+    geom_text_repel(data=subset(fancy_5YR_nolog, labelit == TRUE), 
+        aes(colour=Grouping, label=species), 
+        angle=45, nudge_x=1, nudge_y=1, show.legend=FALSE) +
+    BioR.theme +
+    labs(x = "Rank", y = "Abundance", title = "Five years Post-restoration (2023-2024)", colour = "Site Type", shape = "Site Type") + scale_color_manual(values=c("#666666","#669933"))
+
+
+
+fancy_5YR_plot2 
+```
+
+## Combining the RA curves to one figure
+```{r, fig.width=20, fig.height=6}
+fancy_Pre_plot + fancy_1YR_plot + fancy_5YR_plot2
+```
+
+# Oyster density data analyses
+
+## Loading the data
+```{r}
+Newoysdens1 <- read.csv("Newoysdens1.csv")
+```
+
+#Plotting the oyster density data
+```{r}
+stackedoys1<-ggplot(Newoysdens1, aes(x=as.factor(Method), y=Oysdens, fill=Shoreline)) + 
+  geom_boxplot()+ 
+  xlab("Restoration Method")+ ylab("Oyster Densities (Oysters/m2)") + labs(fill="Shoreline and Age")
+  
+stackedoys1 + scale_fill_manual(values=c("#BDD7EE","#3B4F23","#317ABD","#82AD4D")) + theme(panel.background = element_rect(fill = 'lightyellow3'))+
+  theme(axis.text=element_text(size=14),
+        axis.title=element_text(size=15,face="bold"),
+        legend.text = element_text(size=12),
+        legend.title = element_text(size=13))
+```
+
+## Checking the distribution of the data and log-transforming for GLMs
+```{r}
+hist(Newoysdens1$Counts)
+log_counts<-log(Newoysdens1$Counts)
+
+noyster<-cbind(Newoysdens1,log_counts)
+hist(noyster$log_counts)
+```
+
+#Preliminary Analysis with Generalized Linear Models (GLMs)
+```{r}
+# I ran multiple models and this one appeared to have the best AIC score.
+GLM_combo<-glm(Counts~Shoreline+Method, data = noyster, family = poisson)
+summary(GLM_combo)
+```
+
+#Future Analyses
+```{r}
+#Linear mixed effects model with time, season, and water quality as fixed effects
+#In addition to oyster densities, I want to look at how these effects may impact the reef footprint, marsh edge location, and marsh stem density/heights.
+```
+
+
+
