@@ -109,4 +109,4 @@ This more site-specific map, pictured below, shows the distribution of my sample
             - I am interested in using linear mixed models because this is a good approach to use when you have multiple observations from the same sites, which will be the case for me when I integrate not only the habitat data I have from this year but also when I'm comparing these results to the results from the early monitoring efforts done by Emory Wellman.
 
 For final output, see "praccomp2024_FinalProject_done.rmd" in the final_project folder.
-For final visual output, see Praccomp Final Project PDF.
+For final visual output, see Praccomp Final Project PDF in the final_project folder.
